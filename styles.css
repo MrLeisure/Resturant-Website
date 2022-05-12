@@ -1,0 +1,142 @@
+:root {
+    --logo-height: 70px;
+    --logo-ratio: 1.3324;
+    --navbar-height: 70px;
+}
+
+body {
+    background-color: #FAF9F6;
+    background-color: #232B2B;
+    margin: 0;
+}
+
+.navbar {
+    width: 100%;
+    height: var(--navbar-height);
+    overflow: hidden;
+    /* box-shadow: 0px 0px 8px -4px black; */
+    background: #00000053;
+    display: block;
+    position: absolute;
+    z-index: 100;
+}
+
+.logo > img {
+    display: block;
+    height: var(--logo-height);
+    width: cal(var(--logo-height) * var(--logo-ratio));
+    cursor: grab;
+}
+
+.logo {
+    float: left;
+}
+
+.main_image_container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url(assets/main_page.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.main_image {
+    width: 100vw;
+    height: cal(100vw/var(--logo-ratio));
+    /* height: max(100vh, cal(100vw / var(--logo-ratio))); */
+    /* min-width: calc(100vh * var(--logo-ratio)); */
+    min-height: 100vh;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    display: block;
+    position: relative;
+}
+
+.nav_item_container {
+    float: right;
+    color: #FAF9F6;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.nav_item {
+    margin: auto 20px;
+    text-align: center;
+    font-family: "Sofia", sans-serif;
+    /* text-shadow: 1px 1px 1px; */
+}
+
+.nav_item:hover {
+    text-decoration: underline;
+    color: white;
+    user-select: none;
+}
+
+.nav_item > a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav_item > a:hover {
+    text-decoration: underline;
+}
+
+.restaurant_name {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 70px;
+    font-family: "Sofia";
+    text-shadow: 1px 1px 10px black;
+    position: absolute;
+    color: white;
+    user-select: none;
+}
+
+.footer {
+    /* width: cal(100vw - (100vw -100%)); */
+    height: 100px;
+    width: 100%;
+    background-color: #232B2B;
+
+}
+
+.nav_item_container::before {
+    content: url(assets/dropdown_icon.png);
+    height: var(--navbar-height);
+    visibility: hidden;
+    transform: scale(.03);
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.nav_item_container::before > * {
+    height: var(--navbar-height);
+    width: 10px;
+}
+
+@media only screen and (max-width: 1080px) {
+    body {
+        background-color: lightblue;
+    }
+    .nav_item_container::before {
+        visibility: visible;
+    }
+    .nav_item_container {
+        display: block;
+        width: 100%;
+    }
+    .nav_item {
+        display: block;
+        font-size: 40px;
+    }
+    .navbar {
+        overflow: visible;
+        height: auto;
+    }
+}
