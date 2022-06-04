@@ -4,11 +4,163 @@
     --navbar-height: 70px;
 }
 
+.js-scroll {
+    position: relative;
+    transition:  500ms;
+}
+
+.js-scroll.fade {
+    opacity: 0;
+}
+
+.js-scroll.slide-left {
+    transform: translate( 100px, 0%);
+}
+.js-scroll.slide-right {
+    transform: translate(-100px, 0%);
+}
+.js-scroll.slide-up {
+    transform: translate( 0, 100px);
+}
+.js-scroll.slide-down {
+    transform: translate( 0, -100px);
+}
+
+.js-scroll.scrolled {
+    transform: translate(0, 0);
+    opacity: 1;
+}
+
 body {
     background-color: #FAF9F6;
     background-color: #232B2B;
     margin: 0;
 }
+
+.slide-section {
+    width: 40%;
+    height: 20em;
+    margin: 0;
+    background-color: white;
+    display: block;
+}
+
+.slide-section.slide-left {
+    float: right;
+}
+
+.slide-section.slide-right {
+    float: left;
+}
+
+.slide-section .ribbon {
+    display: block;
+    position: relative;
+    width: 20%;
+    height: 3em;
+    top: 25%;
+    background-color: black;
+}
+
+.slide-section .ribbon:after, .slide-section .ribbon::before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0%;
+}
+
+.slide-section.slide-right .ribbon {
+    float: right;
+    transform: translate(10px, 0);
+    height: 3em;
+    right: 0%;
+}
+
+.slide-section.slide-right .ribbon:after {
+    border-bottom: 1.5em solid black;
+    border-top: 1.5em solid black;
+    border-left: 1.5em solid transparent;
+    border-right: 1.5em solid black;
+    transform: translate(-100%, 0);
+}
+.slide-section.slide-right .ribbon::before {
+    transform: translate(0px, -4px);
+    border-bottom: 2px solid black;
+    border-top: 2px solid transparent;
+    border-left: 5px solid black;
+    border-right: 5px solid transparent;
+    right: 0;
+}
+
+.slide-section.slide-left .ribbon {
+    float: left;
+    transform: translate(-10px, 0);
+    left: 0%;
+}
+
+.slide-section.slide-left .ribbon:after {
+    border-bottom: 1.5em solid black;
+    border-top: 1.5em solid black;
+    border-left: 1.5em solid black;
+    border-right: 1.5em solid transparent;
+    transform: translate(100%, 0);
+    right: 0;
+}
+.slide-section.slide-left .ribbon::before {
+    transform: translate(0px, -4px);
+    border-bottom: 2px solid black;
+    border-top: 2px solid transparent;
+    border-left: 5px solid transparent;
+    border-right: 5px solid black;
+    left: 0;
+}
+
+.section-img {
+    position: relative;
+    width: auto;
+    height: 20em;
+}
+
+.divider {
+    display: block;
+    margin: 100px 0;
+    width: 100%;
+    height: 20em;
+}
+
+.divider > * {
+    display: inline-block;
+}
+
+.section-img > img {
+    position: relative;
+    width: auto;
+    height: 100%;
+    margin: 0 100px;
+}
+
+.section-img.left {
+    float: right;
+}
+.section-img.right {
+    float: left;
+}
+
+.review-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 300px;
+}
+
+.review-card {
+    background-color: white;
+    width: 300px;
+    height: 400px;
+    display: block;
+}
+
 
 .navbar {
     width: 100%;
@@ -17,7 +169,7 @@ body {
     /* box-shadow: 0px 0px 8px -4px black; */
     background: #00000053;
     display: block;
-    position: absolute;
+    position: fixed;
     z-index: 100;
 }
 
@@ -31,14 +183,44 @@ body {
 .logo {
     float: left;
 }
+.main_content {
+    /* scroll-snap-type: y mandatory; */
+    width: 100%;
+    height: 100vh;
+}
+
+.section {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.first-section {
+    overflow: hidden;
+    background-image: url(assets/main_page.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+.second-section {
+    overflow: hidden;
+    background-image: url(assets/main_page2.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    padding: 300px 0;
+}
+.third-section {
+    overflow: hidden;
+    background-image: url(assets/main_page3.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    padding: 300px 0;
+}
 
 .main_image_container {
     width: 100%;
     height: 100vh;
-    overflow: hidden;
-    background-image: url(assets/main_page.jpg);
-    background-size: cover;
-    background-position: center;
 }
 
 .main_image {
@@ -57,7 +239,7 @@ body {
 .nav_item_container {
     float: right;
     color: #FAF9F6;
-    font-size: 25px;
+    font-size: 15px;
     display: flex;
     justify-content: center;
     height: 100%;
@@ -89,10 +271,11 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: fit-content;
     font-size: 70px;
     font-family: "Sofia";
     text-shadow: 1px 1px 10px black;
-    position: absolute;
+    position: relative;
     color: white;
     user-select: none;
 }
@@ -102,7 +285,6 @@ body {
     height: 100px;
     width: 100%;
     background-color: #232B2B;
-
 }
 
 .nav_item_container::before {
@@ -120,7 +302,68 @@ body {
     width: 10px;
 }
 
-@media only screen and (max-width: 1080px) {
+
+.footer-list {
+    width: 100%;
+    height: 12em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    font-family: sans-serif ;
+}
+
+.footer-card {
+    overflow-wrap: break-word;
+    overflow: hidden;
+    height: 10em;
+    width: 10em;
+}
+
+.footer-card > .icon {
+    width: 30px;
+    height: 30px;
+}
+
+.footer-card > .icon > img {
+    width: 100%;
+    height: auto;
+    filter: brightness(100);
+}
+
+.footer-card > * {
+    margin-bottom: 15px;
+}
+
+.footer-card > .title {
+    text-decoration: solid;
+    font-size: large;
+    font-weight: bold;
+}
+.footer-card > .content {
+    color: wheat;
+    font-size: small;
+    line-height: 1.7em;
+}
+
+.to-the-top {
+    width: 100px;
+    height: 50px;
+    margin: auto;
+}
+.to-the-top > a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    }
+
+.to-the-top > a > img {
+    height: 100%;
+    width: 100%;
+}
+
+/* @media only screen and (max-width: 1080px) {
     body {
         background-color: lightblue;
     }
@@ -139,4 +382,4 @@ body {
         overflow: visible;
         height: auto;
     }
-}
+} */
