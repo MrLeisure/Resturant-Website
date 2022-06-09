@@ -95,12 +95,13 @@ function goToGalleryImg(instant = false) {
     }
     var speed = 10;
     var dir = Math.sign(distance) * speed;
-    galleryList.style.left = Number(galleryList.style.left.slice(0, -2)) + dir +'px'
     if (dir > Math.abs(distance)) {
+        galleryList.style.left = Number(galleryList.style.left.slice(0, -2)) + distance +'px';
         selected.classList.add('done');
         return;
     }
-    galleryScrollDelay = setTimeout(goToGalleryImg, 10)
+    galleryList.style.left = Number(galleryList.style.left.slice(0, -2)) + dir +'px'
+    galleryScrollDelay = setTimeout(goToGalleryImg, 0.5)
 }
 
 
@@ -108,10 +109,11 @@ goback.addEventListener( 'click', function (e) {
     if (!galleryList) return;
     selected = getSelectedGalleryImg();
     if (!selected) return;
-    selected.classList.remove('selected', 'done');
-    console.log(selected)
-    selected = selected.previousElementSibling || selected;
-    selected.classList.add('selected');
+    if (selected.previousElementSibling) {
+        selected.classList.remove('selected', 'done');
+        selected = selected.previousElementSibling || selected;
+        selected.classList.add('selected');
+    }
     goToGalleryImg();
 })
 
@@ -119,11 +121,14 @@ goforward.addEventListener( 'click', function (e) {
     if (!galleryList) return;
     selected = getSelectedGalleryImg();
     if (!selected) return;
-    selected.classList.remove('selected', 'done');
-    console.log(selected)
-    selected = selected.nextElementSibling || selected;
-    selected.classList.add('selected');
+    if (selected.nextElementSibling){
+        selected.classList.remove('selected', 'done');
+        selected = selected.nextElementSibling || selected;
+        selected.classList.add('selected');
+    }
     goToGalleryImg();
 })
 
-
+window.addEventListener('load', function () {
+    galleryList.style.overflowX =   'clip';
+})
