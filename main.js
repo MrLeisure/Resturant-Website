@@ -85,6 +85,8 @@ function getSelectedGalleryImg() {
 }
 
 function goToGalleryImg(instant = false) {
+    if (!galleryList) return;
+    if (!selected) selected = getSelectedGalleryImg();
     var rect = selected.getBoundingClientRect();
     var distance = rect.left + (rect.right - rect.left)/2  - window.innerWidth/2
     distance *= -1;
@@ -105,7 +107,7 @@ function goToGalleryImg(instant = false) {
 }
 
 
-goback.addEventListener( 'click', function (e) {
+goback?.addEventListener( 'click', function (e) {
     if (!galleryList) return;
     selected = getSelectedGalleryImg();
     if (!selected) return;
@@ -117,7 +119,7 @@ goback.addEventListener( 'click', function (e) {
     goToGalleryImg();
 })
 
-goforward.addEventListener( 'click', function (e) {
+goforward?.addEventListener( 'click', function (e) {
     if (!galleryList) return;
     selected = getSelectedGalleryImg();
     if (!selected) return;
@@ -130,8 +132,14 @@ goforward.addEventListener( 'click', function (e) {
 })
 
 window.addEventListener('load', function () {
-    galleryList.style.overflowX =   'clip';
+    if(galleryList) galleryList.style.overflowX =   'clip';
 })
 
 
+var navbutton =  document.querySelector('.nav-button');
+var navbar = document.querySelector('.nav_item_container');
+navbutton?.addEventListener('click', function () {
+    if (!navbar) return;
+    navbar.classList.toggle('hidden')
+})
 function loadImages () {}

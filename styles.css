@@ -51,7 +51,9 @@ body {
 
 .slide-section {
     width: 40%;
-    height: 20em;
+    min-width: 425px;
+    min-height: 20em;
+    height: fit-content;
     margin: 0;
     background-color: white;
     display: block;
@@ -69,10 +71,10 @@ body {
 
 .slide-section .ribbon {
     display: block;
-    position: relative;
+    position: absolute;
     width: 20%;
     height: 3em;
-    top: 25%;
+    top: 4%;
     background-color: black;
 }
 
@@ -130,9 +132,20 @@ body {
 }
 
 .section-img {
-    position: relative;
-    width: auto;
+    position: absolute;
+    width: -moz-fit-content;
+    width: fit-content;
     height: 20em;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+.scrolled .section-img.left {
+    right: 0;
+    transform: translate(50vw, -50%);
+}
+.scrolled .section-img.right {
+    left: 0;
+    transform: translate(-50vw, -50%);
 }
 
 .divider {
@@ -150,7 +163,6 @@ body {
     position: relative;
     width: auto;
     height: 100%;
-    margin: 0 100px;
     animation: bob 2s infinite ease-in-out;
     filter: drop-shadow(1px 1px 5px black);
 }
@@ -163,6 +175,7 @@ body {
 }
 
 .home_heading {
+    width: -moz-fit-content;
     width: fit-content;
     font-size: 44px;
     margin: auto;
@@ -176,6 +189,7 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    height: -moz-fit-content;
     height: fit-content ;
 }
 
@@ -357,7 +371,6 @@ body {
 .nav_item:hover {
     text-decoration: underline;
     color: white;
-    user-select: none;
 }
 
 .nav_item > a {
@@ -385,6 +398,7 @@ body {
     text-shadow: 1px 1px 10px black;
     position: relative;
     color: white;
+    -webkit-user-select: none;
     user-select: none;
 }
 
@@ -451,6 +465,7 @@ body {
     text-decoration: none;
     color: black;
     border: 2px solid black;
+    width: -moz-fit-content;
     width: fit-content;
     padding: 10px;
     top: 75%;
@@ -526,6 +541,7 @@ body {
 }
 
 .gallery-list {
+    width: -moz-fit-content;
     width: fit-content;
     height: 100%;
     display: flex;
@@ -551,6 +567,7 @@ body {
 /* menu */
 
 .heading {
+    width: -moz-fit-content;
     width: fit-content;
     padding-top: 70px;
     width: 100%;
@@ -561,6 +578,7 @@ body {
 
 .heading > * {
     position: relative;
+    width: -moz-fit-content;
     width: fit-content;
     display: block;
     top: 50%;
@@ -611,6 +629,7 @@ body {
 
 .sub_heading {
     margin: auto;
+    width: -moz-fit-content;
     width: fit-content;
 }
 .about-dish {
@@ -767,10 +786,10 @@ body {
 }
 
 .location > img {
-    width: 600px;
+    width: 80%;
     height: 450px;
     object-fit: none;
-    margin-left: 100px;
+    margin-left: 10%;
     float: left;
     display: inline;
 }
@@ -828,17 +847,21 @@ body {
     margin-bottom: 30px;
 }
 
-.nav_item_container::before {
-    content: url(assets/dropdown_icon.png);
+.nav-button {
+    background: url(assets/dropdown_icon.png);
+    background-size: cover;
     height: var(--navbar-height);
     visibility: hidden;
-    transform: scale(.03);
-    position: fixed;
-    top: 0;
+    width: var(--navbar-height);
+    position: absolute;
+    display: block;
+    position: absolute;
     right: 0;
+    margin: 0 10px;
+    cursor: pointer;
 }
 
-.nav_item_container::before > * {
+.nav-button> * {
     height: var(--navbar-height);
     width: 10px;
 }
@@ -929,6 +952,7 @@ body {
 }
 
 .credit {
+    width: -moz-fit-content;
     width: fit-content;
     margin: auto;
     color: white;
@@ -947,11 +971,11 @@ body {
     }
 }
 
-/* @media only screen and (max-width: 1080px) {
+@media only screen and (max-width: 1080px) {
     body {
         background-color: lightblue;
     }
-    .nav_item_container::before {
+    .nav-button {
         visibility: visible;
     }
     .nav_item_container {
@@ -964,6 +988,21 @@ body {
     }
     .navbar {
         overflow: visible;
+        background-color: #00000053;
+        padding-bottom: 10px;
         height: auto;
     }
-} */
+    .flex-container {
+        flex-direction: column;
+    }
+    .location {
+        width: 100%;
+    }
+    .hours {
+        width: 100%;
+    }
+    .hidden {
+        visibility: collapse;
+        height: 0;
+    }
+}
