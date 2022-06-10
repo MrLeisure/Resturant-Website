@@ -97,7 +97,7 @@ function goToGalleryImg(instant = false) {
     var dir = Math.sign(distance) * speed;
     if (dir >= Math.abs(distance)) {
         galleryList.style.left = Number(galleryList.style.left.slice(0, -2)) + distance +'px';
-        selected.classList.add('done');
+        setTimeout(() => {selected.classList.add('done')}, 10);
         return;
     }
     galleryList.style.left = Number(galleryList.style.left.slice(0, -2)) + dir +'px'

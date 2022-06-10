@@ -928,6 +928,13 @@ body {
     position: absolute;
 }
 
+.credit {
+    width: fit-content;
+    margin: auto;
+    color: white;
+    padding-top: 30px;
+}
+
 @keyframes bob {
     0% {
         transform: translate(0, -10px);
