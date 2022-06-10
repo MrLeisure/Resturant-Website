@@ -95,7 +95,7 @@ function goToGalleryImg(instant = false) {
     }
     var speed = 10;
     var dir = Math.sign(distance) * speed;
-    if (dir > Math.abs(distance)) {
+    if (dir >= Math.abs(distance)) {
         galleryList.style.left = Number(galleryList.style.left.slice(0, -2)) + distance +'px';
         selected.classList.add('done');
         return;
@@ -132,3 +132,6 @@ goforward.addEventListener( 'click', function (e) {
 window.addEventListener('load', function () {
     galleryList.style.overflowX =   'clip';
 })
+
+
+function loadImages () {}

@@ -56,6 +56,7 @@ body {
     background-color: white;
     display: block;
     box-shadow: var(--box-shadow);
+    border-radius: 5px;
 }
 
 .slide-section.slide-left {
@@ -151,7 +152,7 @@ body {
     height: 100%;
     margin: 0 100px;
     animation: bob 2s infinite ease-in-out;
-    filter: drop-shadow(var(--box-shadow));
+    filter: drop-shadow(1px 1px 5px black);
 }
 
 .section-img.left {
@@ -161,22 +162,100 @@ body {
     float: left;
 }
 
+.home_heading {
+    width: fit-content;
+    font-size: 44px;
+    margin: auto;
+    margin-bottom: 100px;
+    color: white;
+    text-shadow: 1px 1px 10xp black;
+}
+
 .review-list {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    height: 300px;
+    height: fit-content ;
 }
 
 .review-card {
     background-color: white;
     width: 300px;
     height: 400px;
-    display: block;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
     box-shadow: var(--box-shadow);
     transition: 500ms;
+    border-radius: 5px;
 }
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+}
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+    box-shadow: 0px -0px 2px 0px black;
+    border-radius: 50%;
+}
+.ratings {
+    width: 100%;
+    text-align: center;
+}
+.star {
+    position: relative;
+    
+    display: inline-block;
+    width: 0;
+    height: 0;
+    
+    margin-left: .9em;
+    margin-right: .9em;
+    margin-bottom: 1.2em;
+    
+    border-right:  .3em solid transparent;
+    border-bottom: .7em  solid #FC0;
+    border-left:   .3em solid transparent;
+  
+    /* Controlls the size of the stars. */
+    font-size: 16px;
+
+}
+    
+.star:before, .star:after {
+    content: '';
+    
+    display: block;
+    width: 0;
+    height: 0;
+    
+    position: absolute;
+    top: .6em;
+    left: -1em;
+
+    border-right:  1em solid transparent;
+    border-bottom: .7em  solid #FC0;
+    border-left:   1em solid transparent;
+
+    transform: rotate(-35deg);
+}
+
+.star:after {  
+    transform: rotate(35deg);
+}
+
+.review-text {
+    text-align: center;
+    padding: 20px;
+    padding-top: 0;
+    color: rgba(0, 0, 0, 0.637);
+}
+
 
 .review-card:hover {
     transform: scale(1.1);
@@ -230,7 +309,7 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    padding: 300px 0;
+    padding-bottom: 300px;
 }
 .third-section {
     overflow: hidden;
@@ -238,7 +317,6 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    padding: 300px 0;
 }
 
 .main_image_container {
@@ -271,6 +349,7 @@ body {
 .nav_item {
     margin: auto 20px;
     text-align: center;
+    text-shadow: 1px 1px 4px black;
     /* font-family: "Sofia", sans-serif; */
     /* text-shadow: 1px 1px 1px; */
 }
@@ -308,6 +387,86 @@ body {
     color: white;
     user-select: none;
 }
+
+/* home_page */
+
+.slide-section > * {
+}
+
+.slide-section h1 {
+    font-size: 44px;
+    margin: 10px;
+    position: relative;
+    height: 30%;
+    width: 70%;
+    text-align: center;
+}
+
+.slide-section.slide-left h1 {
+    right: 0;
+}
+
+.slide-section.slide-left * {
+    float: right;
+    text-align: center;
+}
+
+.slide-section hr {
+    width: 30%;
+    margin: auto;
+    margin-bottom: 10px;
+    position: relative;
+    }
+
+.slide-section.slide-section.slide-left hr{
+    float: none;
+}
+
+.slide-section p {
+    font-size: 1.4em;
+    display: inline-block;
+    position: relative;
+    width: 65%;
+    font-style: italic;
+    text-align: center;
+    margin: 10px;
+}
+
+.slide-section.slide-left p {
+    right: 0;
+    text-align: center;
+}
+
+.slide-section span {
+    float: right;
+    width: 30%;
+    height: 3em;
+}
+.slide-section.slide-left span {
+    float: left;
+}
+
+.slide-section a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    border: 2px solid black;
+    width: fit-content;
+    padding: 10px;
+    top: 75%;
+    left: 70%;
+    position: absolute;
+}
+
+.slide-section.slide-left a {
+    left: 10%;
+
+}
+.slide-section a:hover {
+    background-color: black;
+    color: white;
+}
+
 
 /* gallery */
 
@@ -411,10 +570,15 @@ body {
     /* text-shadow: 2px 2px 10px black; */
     font-size: xx-large;
 }
+.sub_heading {
+    font-size: 30px;
+}
 
 .menu {
-    width: 100%;
+    width: calc(100% - 22px);
     /* padding: 100px 20%; */
+    margin: 10px;
+    border: 1px solid black;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -428,9 +592,90 @@ body {
     /* left: 50%; */
     margin: 20vh 0;
     margin-bottom: 0;
+    width: 80%;
     /* width: fit-content; */
     /* transform: translate(-50%, 0); */
 }
+
+.special_dish {
+    margin: auto;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.special_dish.invert {
+    flex-direction: row-reverse;
+}
+
+.sub_heading {
+    margin: auto;
+    width: fit-content;
+}
+.about-dish {
+    text-align: center;
+    flex: 1;
+    max-width: 300px;
+}
+
+.about-dish hr {
+    width: 50%;
+}
+
+.about-dish h2 {
+    color: rgb(211, 165, 79);
+    font-weight: 500;
+}
+
+.dish-image {
+    width: 400px;
+    height: auto;
+    margin-right: 50px;
+    flex: 1;
+}
+
+.invert .dish-image {
+    margin-left: 50px;
+    margin-right    : 0;
+}
+
+.sub_menu table {
+    width: 100%;
+}
+
+.sub_menu th {
+    font-size: 30px;
+}
+.sub_menu hr {
+    width: 100px;
+    background-color: #b08e3d;
+}
+
+
+.sub_menu .price {
+    width: 15%;
+    border: 1px solid rgba(0,0,0,.08);
+    border-right: none;
+    text-align: center;
+    color: rgb(211, 165, 79);
+    padding: 10px;
+}
+.sub_menu .name {
+    width: 85%;
+    border: 1px solid rgba(0,0,0,.08);
+    border-left: none;
+    border-right: none;
+    padding: 10px;
+}
+
+.sub_menu .last {
+    border-bottom: none;
+}
+.sub_menu .first {
+    box-shadow: inset 0px 4px 3px -2px rgb(0 0 0 / 6%);
+}
+
 
 /* about-us */
 
@@ -615,6 +860,7 @@ body {
     overflow: hidden;
     height: 10em;
     width: 10em;
+    padding: 0 5px;
 }
 
 .footer-card > .icon {
